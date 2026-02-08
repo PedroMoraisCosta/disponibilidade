@@ -45,11 +45,9 @@ jobs:
       uses: actions/configure-pages@v5
 
     - name: Install gems
-      working-directory: ./disponibilidade
       run: bundle install
 
     - name: Build with Jekyll
-      working-directory: ./disponibilidade
       run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
       env:
         JEKYLL_ENV: production
@@ -57,7 +55,7 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: ./disponibilidade/_site
+        path: ./_site
 
   # Deployment job
   deploy:
